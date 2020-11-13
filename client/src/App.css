@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.home {
+  width: 100%;
+}
+
+nav {
+  background-color: seagreen;
+  padding: 2%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  padding: 3%;
+  margin-top: 20%;
+}
+
+.header {
+   padding: 5%;
+}
+
+.header img {
+  width: 30%;
+}
+
+.header p {
+  line-height: 2;
+}
+
+input {
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-p {
+  margin-top: 5%;
+}
+
+
