@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
-import ProtectedRoute from './components/ProtectedRoute';
+// import ProtectedRoute from './components/ProtectedRoute';
 
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import Profile from './components/Profile';
-import UpdateProfile from './components/UpdateProfile';
+import Profile from './components/Users';
+import UpdateUser from './components/UpdateUser';
 import PlantsList from './components/PlantsList';
 import UpdatePlant from './components/UpdatePlant';
 import AddNewPlant from './components/AddNewPlant';
@@ -20,28 +20,28 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path='/addNewPlant' component={AddNewPlant}>
+        <Route exact path='/addNewPlant' component={AddNewPlant}>
           <AddNewPlant />
         </Route>
-        <ProtectedRoute path='/plantsList/:id' component={UpdatePlant}>
+        <Route exact path='/plants/:id' component={UpdatePlant}>
           <UpdatePlant />
-        </ProtectedRoute>
-        <ProtectedRoute path='/plantsList' component={PlantsList}>
-          <PlantsList />
-        </ProtectedRoute>
-        <Route path='/updateProfile' component={UpdateProfile}>
-          <UpdateProfile />
         </Route>
-        <ProtectedRoute exact path='/profile' component={Profile}>
+        <Route exact path='/plants' component={PlantsList}>
+          <PlantsList />
+        </Route>
+        <Route exact path='/users/:id' component={UpdateUser}>
+          <UpdateUser />
+        </Route>
+        <Route exact path='/users' component={Profile}>
           <Profile />
-        </ProtectedRoute>
-        <ProtectedRoute exact path='/logout' component={Logout}>
+        </Route>
+        <Route exact path='/logout' component={Logout}>
           <Logout />
-        </ProtectedRoute>
+        </Route>
         <Route path='/login' component={Login}>
           <Login />
         </Route>
-        <Route path='/signup' component={AddNewPlant}>
+        <Route exact path='/signup' component={AddNewPlant}>
           <SignUp />
         </Route>
         <Route exact path='/' component={Home}>

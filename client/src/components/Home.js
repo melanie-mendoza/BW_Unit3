@@ -1,31 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { getToken } from '../utils/axiosWithAuth';
+//import { getToken } from '../utils/axiosWithAuth';
 
-import HomePlants from '../homePlants.jpg';
+import Water from '../water.png';
 
 function Home() {
-    const loggedIn = getToken()
+    //const loggedIn = getToken()
 
     return(
         <div className='home'>
             <nav className='nav'>
                 <Link to={'/'} className='home-nav'>Home</Link>
-                <Link to={'/signup'} className='signup'>Sign Up</Link>
-                {loggedIn && <Link to={'/profile'} className='profile'>Profile</Link>}
-                {!loggedIn && <Link to={'/login'} className='login'>Login</Link>}
-                {loggedIn && <Link to={'/logout'} className='logout'>Logout</Link>}
-                {loggedIn && <Link to={'/plantsList'} className='plantsList'>My Plants</Link>}
+                <Link to={'/users'} className='profile'>Profile</Link>
+                <Link to={'/plants'} className='plantsList'>My Plants</Link>
                 <Link to={'/addNewPlant'} className='addNewPlant'>Add New Plant</Link>
+                <Link to={'/login'} className='login'>Login</Link> 
+                <Link to={'/signup'} className='signup'>Sign Up</Link>      
             </nav>
             <div className='header'>
-                <h1>Water My Plants</h1>
-                <img src={HomePlants} alt='A home plant' /> 
-                <p>Ensuring that all your plants are consistently watered is actually pretty difficult. <br></br> Water My Plants is an app that helps to solve those problems
-                with an easy to use <br></br>interface for creating a plant watering schedule tailored to each individual plant.</p>
+                <h1>WATER MY PLANTS</h1>
+                <p>Helping you keep your plants stay alive.</p>
                 
-            </div>    
+                <Link to={'/signup'} className='signup'>
+                  <img src={Water} alt='A water splash' className='home-signup' />  
+                </Link>
+            </div>  
+         
         </div>
     )
 }

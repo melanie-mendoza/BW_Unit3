@@ -1,14 +1,8 @@
-// Updates plant
-// 1. create a route that takes into account an id from the url using a route parameter(in App.js)
-
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 function UpdatePlant(props) {
-    // state for error handling
-    const [error, setError] = useState()
-
     // state for data
     const [plant, setPlant] = useState({
         id: '',
@@ -57,7 +51,6 @@ function UpdatePlant(props) {
                 <Link to={'/'} className='signup'>Home</Link>
                 <Link to={'/signup'} className='signup'>Sign Up</Link>
                 <Link to={'/profile'} className='profile'>Profile</Link>
-                <Link to={'/login'} className='login'>Login</Link>
                 <Link to={'/plantsList'} className='plantsList'>My Plants</Link>
                 <Link to={'/addNewPlant'} className='addNewPlant'>Add New Plant</Link>
             </nav>
@@ -65,12 +58,12 @@ function UpdatePlant(props) {
                 Update Plant
             </p>
             <form onSubmit={handleSubmit}> 
-                {error && <div className='error'>{error}</div>}  
                 <input type='text' name='nickName' placeholder='Nickname' value={plant.nickName} onChange={handleChange} />
                 <input type='text' name='species' placeholder='Species' value={plant.species} onChange={handleChange}  />
                 <input type='text' name='waterFrequency' placeholder='Water Frequency' value={plant.waterFrequency} onChange={handleChange} />
+                <button type='submit'>Save</button>
             </form>
-            <button type='submit'>Save</button>
+            
             
         </div>
     )

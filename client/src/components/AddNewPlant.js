@@ -22,14 +22,14 @@ function AddNewPlant(props) {
         })
     }
 
-    // define a handleSubmit function that takes an event & where axios call will be made.
+    // handleSubmit function that takes an event & where post request will be made.
     const handleSubmit = (event) => {
         event.preventDefault()
         axios
-        .post('https://water-my-plants2020.herokuapp.com/api/plants', newPlant) // sends a post request to the server and sends data to the signin endpoint
+        .post('https://water-my-plants2020.herokuapp.com/api/plants', newPlant) 
         .then(result => {
             console.log(result.data)
-            localStorage.setItem('token', result.data.token) // store token from API call in localStorage
+            localStorage.setItem('token', result.data.token) 
         })
         .catch(err => {
             setError(err.response.data)
@@ -40,15 +40,13 @@ function AddNewPlant(props) {
         <div>
             <nav className='nav'>
                 <Link to={'/'} className='signup'>Home</Link>
-                <Link to={'/signup'} className='signup'>Sign Up</Link>
                 <Link to={'/profile'} className='profile'>Profile</Link>
-                <Link to={'/login'} className='login'>Login</Link>
                 <Link to={'/plantsList'} className='plantsList'>My Plants</Link>
-                <Link to={'/addNewPlant'} className='addNewPlant'>Add New Plant</Link>
+                <Link to={'/logout'} className='logout'>Logout</Link>
             </nav>
-            <p>
+            <h1 className='h-add-plant'>
                 Add New Plant
-            </p>
+            </h1>
             <form onSubmit={handleSubmit}>
                 {error && <div className='error'>{error}</div>}  
                 <input type='text' name='nickName' placeholder='Nickname' value={newPlant.nickName} onChange={handleChange} />
