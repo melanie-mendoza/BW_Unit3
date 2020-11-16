@@ -38,7 +38,7 @@ function SignUp(props) {
                 <Link to={'/signup'} className='signup'>Sign Up</Link>
                 <Link to={'/users'} className='profile'>Users</Link>
                 <Link to={'/login'} className='login'>Login</Link>
-                <Link to={'/plantsList'} className='plantsList'>My Plants</Link>
+                <Link to={'/plants'} className='plantsList'>My Plants</Link>
                 <Link to={'/addNewPlant'} className='addNewPlant'>Add New Plant</Link>
             </nav>
             <h1 className='h-signup'>
@@ -49,7 +49,7 @@ function SignUp(props) {
                 <input type='text' name='username' placeholder='User Name' value={data.username} onChange={handleChange} />
                 <input type='phoneNumber' name='phoneNumber' placeholder='Phone Number' value={data.phoneNumber} onChange={handleChange} />
                 <input type='password' name='password' placeholder='Password' value={data.password} onChange={handleChange} />
-                <Link to={'/profile'} className='signup'>
+                <Link to={'/users'} className='signup'>
                     <button type='submit'>Sign Up</button>
                 </Link>
                 

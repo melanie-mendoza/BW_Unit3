@@ -40,7 +40,7 @@ function Login(props) {
                 <Link to={'/signup'} className='signup'>Sign Up</Link>
                 <Link to={'/users'} className='profile'>Users</Link>
                 <Link to={'/login'} className='login'>Login</Link>
-                <Link to={'/plantsList'} className='plantsList'>My Plants</Link>
+                <Link to={'/plants'} className='plantsList'>My Plants</Link>
                 <Link to={'/addNewPlant'} className='addNewPlant'>Add New Plant</Link>
             </nav>
             <h1 className='login-p'>
