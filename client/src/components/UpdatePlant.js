@@ -41,10 +41,6 @@ function UpdatePlant(props) {
         })
     }
 
-  
-
-   
-
     return (
         <div>
             <nav className='nav'>
@@ -62,9 +58,7 @@ function UpdatePlant(props) {
                 <input type='text' name='species' placeholder='Species' value={plant.species} onChange={handleChange}  />
                 <input type='text' name='waterFrequency' placeholder='Water Frequency' value={plant.waterFrequency} onChange={handleChange} />
                 <button type='submit'>Save</button>
-            </form>
-            
-            
+            </form>    
         </div>
     )
 };

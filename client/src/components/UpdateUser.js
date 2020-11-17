@@ -1,13 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 
 function UpdateUser(props) {
-    // state for error handling
-    // const [error, setError] = useState()
-
     // state for user
     const [user, setUser] = useState({
         id: '',
@@ -15,19 +13,16 @@ function UpdateUser(props) {
         phoneNumber: '',
     })
 
-    const { id } = useParams();
-    const { push } = useHistory();
-
     useEffect(() => {
-        axios
-            .get(`https://water-my-plants2020.herokuapp.com/api/users/${id}`)
+        axiosWithAuth()
+            .get(`/users/${props.match.params.id}`)
             .then(result => {
                 setUser(result.data)
             })
             .catch(error => {
                 console.log(error)
             })
-    }, [id])
+    }, [props.match.params.id])
 
     // handleChange function to control inputs
     const handleChange = (event) => {
@@ -40,12 +35,10 @@ function UpdateUser(props) {
     // handleSubmit function that takes an event & where put request will be made.
     const handleSubmit = (event) => {
         event.preventDefault()
-        // console.log(user)
-        axios
-        .put(`https://water-my-plants2020.herokuapp.com/api/users/${id}`, user) // sends a post request to the server and sends data to the signin endpoint
+        axiosWithAuth()
+        .put(`/users/${user.id}`, user) // sends a post request to the server and sends data to the signin endpoint
         .then(result => {
-              props.setUsers(result.data);
-              push('/users')   
+              props.history.push('/users')   //reroute back to users component
         })
         .catch(error => {
             console.log(error)
@@ -66,7 +59,6 @@ function UpdateUser(props) {
                 Update User
             </h1>
             <form onSubmit={handleSubmit}>
-                {/* {error && <div className='error'>{error}</div>}   */}
                 <input type='text' name='username' placeholder='User Name' value={user.username} onChange={handleChange} />
                 <input type='text' name='phoneNumber' placeholder='Phone Number' value={user.phoneNumber} onChange={handleChange} />
                 <button type='submit'>Save</button>

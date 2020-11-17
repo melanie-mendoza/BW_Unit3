@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import PlantsCard from "./PlantsCard";
-
 export default function PlantsList() {
   const [plants, setPlants] = useState([]);
 
@@ -29,15 +27,14 @@ export default function PlantsList() {
       </nav>
       <h1> My Plants </h1>
       <div>
-        {plants.map(plant => {
-          return (
-            <PlantsCard
-              id={plant.id}
-              nickname={plant.nickname}
-              species={plant.species}
-            />
-          );
-        })}
+        {plants.map(plant => (
+          <div key={plant.id} className='plant-card'>
+          <div className='delete'>Delete</div>
+          <div>Username: {plant.nickname}</div>
+          <div>Phone Number: {plant.species}</div>
+          <Link className='update-user' to={`/users/${plant.id}`}>Edit</Link> 
+        </div>
+        ))}
       </div>
     </div>
   );

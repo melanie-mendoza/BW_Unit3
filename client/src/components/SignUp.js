@@ -45,7 +45,6 @@ function SignUp(props) {
                 Great! Let's Get You Started!
             </h1>
             <form onSubmit={handleSubmit}>
-                {/* {error && <div className='error'>{error}</div>}   */}
                 <input type='text' name='username' placeholder='User Name' value={data.username} onChange={handleChange} />
                 <input type='phoneNumber' name='phoneNumber' placeholder='Phone Number' value={data.phoneNumber} onChange={handleChange} />
                 <input type='password' name='password' placeholder='Password' value={data.password} onChange={handleChange} />
@@ -53,8 +52,7 @@ function SignUp(props) {
                     <button type='submit'>Sign Up</button>
                 </Link>
                 
-            </form>
-          
+            </form> 
         </div>
     )
 };

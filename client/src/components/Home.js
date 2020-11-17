@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-//import { getToken } from '../utils/axiosWithAuth';
-
 import Water from '../water.png';
 
 function Home() {
-    //const loggedIn = getToken()
 
-    return(
+    return (
         <div className='home'>
             <nav className='nav'>
                 <Link to={'/'} className='home-nav'>Home</Link>

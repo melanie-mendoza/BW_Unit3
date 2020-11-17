@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
-import UserCard from "./UserCard";
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('https://water-my-plants2020.herokuapp.com/api/users')
-      .then(response => {
-        console.log(response.data);
-        setUsers(response.data);
+    axiosWithAuth()
+      .get('/users')
+      .then(result => {
+        console.log(result.data);
+        setUsers(result.data);
       })
       .catch(err => {
         console.log(err);
@@ -29,18 +28,15 @@ export default function Users() {
       </nav>
       <h1> Users </h1>
       <div>
-        {users.map(user => {
-          return (
-            <UserCard
-              id={user.id}
-              username={user.username}
-              phoneNumber={user.phoneNumber}
-            />
-          );
-        })}
-      </div> 
-      
+        {users.map(user => (
+          <div key={user.id} className='profile-card'>
+            <div className='delete'>Delete</div>
+            <div>Username: {user.username}</div>
+            <div>Phone Number: {user.phoneNumber}</div>
+            <Link className='update-user' to={`/users/${user.id}`}>Edit</Link> 
+          </div>
+        ))}
+      </div>  
     </div>
   );
-  
 }
