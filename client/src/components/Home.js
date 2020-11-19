@@ -23,7 +23,9 @@ function Home() {
                   <img src={Water} alt='A water splash' className='home-signup' />  
                 </Link>
             </div>  
-         
+            <footer>
+                <div>Copyright Water My Plants 2020</div>
+            </footer>
         </div>
     )
 }
