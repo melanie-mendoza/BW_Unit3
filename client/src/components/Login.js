@@ -26,7 +26,7 @@ function Login(props) {
         .then(result => {
             console.log(result.data)
             localStorage.setItem('token', result.data.token) // store token from API call in localStorage
-            props.history.push('/users') // redirects the user to Profile page once logged in.
+            //props.history.push('/users') // redirects the user to Profile page once logged in.
         })
         .catch(err => {
             console.log(console.error)
@@ -47,11 +47,12 @@ function Login(props) {
                 Login To Your Account
             </h1>
             <form onSubmit={handleSubmit}>
-                <input type='text' name='username' placeholder='User Name' value={data.username} onChange={handleChange} />
+                <input type='text' name='username' placeholder='Username' value={data.username} onChange={handleChange} />
                 <input type='password' name='password' placeholder='Password' value={data.password} onChange={handleChange} />
-                <Link to={'/users'} className='login'>
+                {/* <Link to={'/users'} className='login'>
                     <button type='submit'>LOGIN</button>
-                </Link>
+                </Link> */}
+                <button type='submit'>LOGIN</button>
             </form>   
         </div>
     )

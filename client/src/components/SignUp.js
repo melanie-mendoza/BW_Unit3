@@ -22,7 +22,7 @@ function SignUp(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
         axios
-        .post('https://water-my-plants2020.herokuapp.com/api/users/register', data) 
+        .post('https://water-my-plants2020.herokuapp.com/api/users/register ', data) 
         .then(result => {
             console.log(result.data)
         })
@@ -46,11 +46,12 @@ function SignUp(props) {
             </h1>
             <form onSubmit={handleSubmit}>
                 <input type='text' name='username' placeholder='User Name' value={data.username} onChange={handleChange} />
-                <input type='phoneNumber' name='phoneNumber' placeholder='Phone Number' value={data.phoneNumber} onChange={handleChange} />
+                <input type='text' name='phoneNumber' placeholder='Phone Number' value={data.phoneNumber} onChange={handleChange} />
                 <input type='password' name='password' placeholder='Password' value={data.password} onChange={handleChange} />
-                <Link to={'/users'} className='signup'>
+                {/* <Link to={'/users'} className='signup'>
                     <button type='submit'>Sign Up</button>
-                </Link>
+                </Link> */}
+                <button type='submit'>Sign Up</button>
                 
             </form> 
         </div>

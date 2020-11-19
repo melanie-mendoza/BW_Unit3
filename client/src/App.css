@@ -94,18 +94,19 @@ button {
 
 .profile-card {
   border: 2px solid black;
-  margin: 1% 40% 3% 40%;
-  padding: 1% 1% 0.35% 0;
+  margin: 2% 20% 3% 30%;
+  padding: 2% 2% 4.5% 2%;
 }
 
 .update-user {
-  margin-right: 85%;
+  border-radius: 40px;
+  margin-right: 100%;
   padding: 2% 5% 2% 5%;
   background-color: turquoise;
 }
 
 .delete {
-  margin: -5.5% -5.5% 0 80%;
+  margin: -5.5% -4% -10% 80%;
   padding: 2% 2% 2% 1%;
   background-color: rgb(146, 197, 245);
 }

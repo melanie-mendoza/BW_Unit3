@@ -1,28 +1,29 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-import axiosWithAuth from '../utils/axiosWithAuth';
+//import axiosWithAuth from '../utils/axiosWithAuth';
 
 
 function UpdateUser(props) {
     // state for user
     const [user, setUser] = useState({
         id: '',
-        username: '',
-        phoneNumber: '',
+        name: '',
+        job: '',
     })
 
-    useEffect(() => {
-        axiosWithAuth()
-            .get(`/users/${props.match.params.id}`)
-            .then(result => {
-                setUser(result.data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [props.match.params.id])
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //         .get(`/users/${props.match.params.id}`)
+    //         .then(result => {
+    //             setUser(result.data)
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }, [props.match.params.id])
 
     // handleChange function to control inputs
     const handleChange = (event) => {
@@ -35,10 +36,11 @@ function UpdateUser(props) {
     // handleSubmit function that takes an event & where put request will be made.
     const handleSubmit = (event) => {
         event.preventDefault()
-        axiosWithAuth()
-        .put(`/users/${user.id}`, user) // sends a post request to the server and sends data to the signin endpoint
+        axios
+        .put('https://reqres.in/api/users/2', user) // sends a post request to the server and sends data to the signin endpoint
         .then(result => {
-              props.history.push('/users')   //reroute back to users component
+              //props.history.push('/users')   //reroute back to users component
+              console.log(result.data)
         })
         .catch(error => {
             console.log(error)
@@ -59,8 +61,8 @@ function UpdateUser(props) {
                 Update User
             </h1>
             <form onSubmit={handleSubmit}>
-                <input type='text' name='username' placeholder='User Name' value={user.username} onChange={handleChange} />
-                <input type='text' name='phoneNumber' placeholder='Phone Number' value={user.phoneNumber} onChange={handleChange} />
+                <input type='text' name='name' placeholder='Name' value={user.name} onChange={handleChange} />
+                <input type='text' name='job' placeholder='Job' value={user.job} onChange={handleChange} />
                 <button type='submit'>Save</button>
             </form>
         </div>
