@@ -34,20 +34,20 @@ export default function Users() {
   return (
     <div className='profile'>
       <nav className='nav'>
+        <h1 className='header-logo'>WMP</h1>
         <Link to={'/'} className='home-nav'>Home</Link>
         <Link to={'/plants'} className='plantsList'>My Plants</Link>
         <Link to={'/addNewPlant'} className='addNewPlant'>Add New Plant</Link>
         <Link to={'/logout'} className='logout'>Logout</Link>
       </nav>
-      <h1> User </h1>
+      <h1> Users </h1>
       <div >
         {users.map(user => (
           <div key={users.id} className='profile-card'>
              <Link className='update-user' to={'/users/2'}>Edit</Link> 
             <div>User Name: {user.username}</div>
             <div>Phone Number: {user.phoneNumber}</div>
-           
-            <div className='delete' onClick={(e) => handleDelete(e, user.id)}>Delete</div>
+            <div className='delete' role='button' onClick={(e) => handleDelete(e, user.id)}>Delete</div>
           </div>
         ))}
       </div>  

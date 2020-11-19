@@ -4,14 +4,11 @@ import axios from 'axios';
 
 
 function AddNewPlant(props) {
-    // state for error handling
-    const [error, setError] = useState()
-
     // state for data
     const [newPlant, setNewPlant] = useState({
         nickName: '',
         species: '',
-        waterFrequency: '',
+        h2oFrequency: '',
     })
 
     // handleChange function to control inputs
@@ -32,15 +29,16 @@ function AddNewPlant(props) {
             localStorage.setItem('token', result.data.token) 
         })
         .catch(err => {
-            setError(err.response.data)
+            console.log(err)
         })
     }
 
     return (
         <div>
             <nav className='nav'>
+                <h1 className='header-logo'>WMP</h1>
                 <Link to={'/'} className='signup'>Home</Link>
-                <Link to={'/profile'} className='profile'>Profile</Link>
+                <Link to={'/users'} className='profile'>Profile</Link>
                 <Link to={'/plantsList'} className='plantsList'>My Plants</Link>
                 <Link to={'/logout'} className='logout'>Logout</Link>
             </nav>
@@ -48,7 +46,6 @@ function AddNewPlant(props) {
                 Add New Plant
             </h1>
             <form onSubmit={handleSubmit}>
-                {error && <div className='error'>{error}</div>}  
                 <input type='text' name='nickName' placeholder='Nickname' value={newPlant.nickName} onChange={handleChange} />
                 <input type='text' name='species' placeholder='Species' value={newPlant.species} onChange={handleChange} />
                 <input type='text' name='waterFrequency' placeholder='Water Frequency' value={newPlant.waterFrequency} onChange={handleChange} />

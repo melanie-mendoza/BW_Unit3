@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 export default function PlantsList() {
   const [plants, setPlants] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('https://water-my-plants2020.herokuapp.com/api/plants')
+    axiosWithAuth()
+      .get('/plants')
       .then(response => {
         console.log(response.data);
         setPlants(response.data);
@@ -20,6 +20,7 @@ export default function PlantsList() {
   return (
     <div className='plants-list'>
       <nav className='nav'>
+        <h1 className='header-logo'>WMP</h1>
         <Link to={'/'} className='signup'>Home</Link>
         <Link to={'/users'} className='profile'>Profile</Link>
         <Link to={'/addNewPlant'} className='addNewPlant'>Add New Plant</Link>
@@ -30,8 +31,9 @@ export default function PlantsList() {
         {plants.map(plant => (
           <div key={plant.id} className='plant-card'>
           <div className='delete'>Delete</div>
-          <div>Username: {plant.nickname}</div>
-          <div>Phone Number: {plant.species}</div>
+          <div>Nickname: {plant.nickname}</div>
+          <div>Species: {plant.species}</div>
+          <div>H2O Frequency: {plant.h2oFrequency}</div>
           <Link className='update-user' to={`/users/${plant.id}`}>Edit</Link> 
         </div>
         ))}

@@ -36,6 +36,7 @@ function Login(props) {
     return (
         <div>
             <nav className='nav'>
+                <h1 className='header-logo'>WMP</h1>
                 <Link to={'/'} className='signup'>Home</Link>
                 <Link to={'/signup'} className='signup'>Sign Up</Link>
                 <Link to={'/users'} className='profile'>Users</Link>
